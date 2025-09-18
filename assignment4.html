@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: gray;
+            color: black;
+            padding: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            padding: 10px;
+            font-size: 20px;
+            display: flex;
+            gap: 50px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: black;
+        }
+
+        .btn {
+            display: inline-block;
+            background: blueviolet;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: black;
+        }
+
+        footer {
+            background: gray;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 1);
+            margin: 80px 20px 60px;
+            padding: 20px;
+            max-width: 400px;
+        }
+
+        .form div {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin: 10px 0;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 10px;
+            border: 2px solid rgb(203, 201, 201);
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+        }
+
+        @media (max-width: 992px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 5px;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                padding: 20px;
+                max-width: 250px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Shop Cloths</h1>
+        <p>Best Quality Products......</p>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+        </nav>
+        <a href="#login" class="btn">Login</a>
+    </header>
+
+    <form class="form">
+        <h1>User Registration Form</h1>
+        <div>
+            <label>Full Name</label>
+            <input id="login" type="text" name="fullname" placeholder="Enter your full name..." required>
+        </div>
+
+        <div>
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="Enter your email..." required>
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password" required id="password"
+                onchange=passWord()>
+        </div>
+
+        <div>
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" placeholder="Re-enter password" required>
+        </div>
+
+        <div>
+            <button type="submit" class="btn">Register</button>
+        </div>
+    </form>
+
+    <footer>
+        <p>&copy; 2025 Cloths. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        function passWord() {
+            let pass = document.getElementById("password").value;
+
+            // ✅ Check max length
+            if (pass.length > 6) {
+                alert("Not more than 6 characters allowed");
+                document.getElementById("password").value = "";
+                return;
+            }
+
+            // ✅ Regex: at least one letter and one number
+            let regex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{1,6}$/;
+
+            if (!regex.test(pass)) {
+                alert("Password must contain at least one letter and one number");
+                document.getElementById("password").value = "";
+                return;
+            }
+        }FF
+
+    </script>
+</body>
+
+</html>

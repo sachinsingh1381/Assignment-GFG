@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Shape & Colors</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .container {
+      width: 90vw;
+      height: 70vh;
+      border: 2px dashed #2c3e50;
+      background: #fef9f6;
+      border-radius: 12px;
+      position: relative;
+      overflow: auto;
+    }
+
+    /* Shapes */
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .square {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+
+    .rectangle {
+      width: 150px;
+      height: 70px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🎨 Random Shapes & Colors</h1>
+  <div class="container"></div>
+
+  <script>
+    let container = document.querySelector(".container");
+
+    container.addEventListener("click", (event) => {
+      let colors = ["#ff6b6b", "#4ecdc4", "#ffe66d", "#1a535c", "#ff9f1c", "#6a4c93"];
+      let colorIndex = colors[Math.floor(Math.random() * colors.length)];
+
+      let randomShape = ["circle", "square", "rectangle"];
+      let shapeIndex = randomShape[Math.floor(Math.random() * randomShape.length)];
+
+      let shape = document.createElement("div");
+      shape.classList.add(shapeIndex);
+      shape.style.backgroundColor = colorIndex;
+
+      shape.style.left = (event.clientX - container.offsetLeft - 50) + "px";
+      shape.style.top = (event.clientY - container.offsetTop - 50) + "px";
+
+      container.appendChild(shape);
+    });
+  </script>
+</body>
+
+</html>

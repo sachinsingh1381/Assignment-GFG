@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Product Listing</h1>
+
+  <!-- Search Section -->
+  <input type="text" id="searchInput" placeholder="Search products...">
+  <button id="searchButton">Search</button>
+
+  <!-- Products List -->
+  <div id="productList">
+    <div class="product">Apple iPhone 14</div>
+    <div class="product">Samsung Galaxy S23</div>
+    <div class="product">OnePlus 11</div>
+    <div class="product">Sony Headphones</div>
+    <div class="product">Dell Laptop</div>
+  </div>
+
+  <script>
+    // Get DOM elements
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const productList = document.getElementById('productList');
+    const products = productList.getElementsByClassName('product');
+
+    // Function to perform search
+    function searchProducts() {
+      const query = searchInput.value.toLowerCase(); // convert query to lowercase
+      for (let product of products) {
+        const productName = product.textContent.toLowerCase();
+        if (productName.includes(query)) {
+          product.classList.remove('hidden'); // show product
+        } else {
+          product.classList.add('hidden'); // hide product
+        }
+      }
+    }
+
+    // Event listener for button click
+    searchButton.addEventListener('click', searchProducts);
+
+    // Event listener for Enter key press
+    searchInput.addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+        searchProducts();
+      }
+    });
+
+  </script>
+</body>
+
+</html>
